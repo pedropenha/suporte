@@ -64,7 +64,21 @@ if(r === true) window.location.href='sair.php';" style="float: right">
         </div>
         <br/>
         <br/>
+        <hr/>
         <h3>Mensagens</h3>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">PedroPenha - Assunto</h4>
+                    <p class="category"><span class="badge badge-danger">Esperando resposta</span></p>
+                </div>
+                <div class="card-body">
+                    Preciso que crie um novo usuario com o nome de usuario Pedro123 e senha 1234.
+                    <a href="#0" class="btn btn-primary" style="float: right;">Responder</a>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="card card-nav-tabs">
             <h4 class="card-header card-header-info">Featured</h4>
             <div class="card-body">
