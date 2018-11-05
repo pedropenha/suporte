@@ -57,12 +57,11 @@ if(r === true) window.location.href='sair.php';" style="float: right">
             <br/>
         </div>
         <hr/>
-        <h3>Mensagens</h3>
         <div>
             <a class="btn btn-info btn-round" href="contato.php" style="float: right;">
                 <i class="material-icons">message</i> Escrever nova mensagem</a>
             <a class="btn btn-primary btn-round" href="create-page.php" style="float: left;">
-                <i class="material-icons">create</i> Pedir criação de página</a>
+                <i class="material-icons">create</i> Criação de página</a>
         </div>
         <br/>
         <br/>
