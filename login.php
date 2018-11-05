@@ -5,11 +5,11 @@ require 'config2.php';
 
 if(isset($_POST['nome']) && !empty($_POST['nome'])) {
     $nome = addslashes($_POST['nome']);
-    $senha = MD5(addslashes($_POST['senha']));
+    $senha = $_POST['senha'];
 
     $sql = $pdo->prepare("SELECT name, password FROM users WHERE name = ? AND password = ?");
     $sql->bindValue(1, $nome);
-    $sql->bindValue(2, $senha);
+    $sql->bindValue(2, MD5($senha));
     $sql->execute();
 
     if($sql->rowCount() > 0) {
