@@ -78,7 +78,6 @@ if(r === true) window.location.href='sair.php';" style="float: right">
                 </div>
             </div>
         </div>
-    </div>
         <div class="card card-nav-tabs">
             <h4 class="card-header card-header-info">Featured</h4>
             <div class="card-body">
