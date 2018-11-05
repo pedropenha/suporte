@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'config.php';
-require 'config2.php';
 
 if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
     ?>

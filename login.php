@@ -1,14 +1,12 @@
 <?php
 session_start();
 require 'config.php';
-require 'config2.php';
 
 if(isset($_POST['nome']) && !empty($_POST['nome'])) {
     $nome = addslashes($_POST['nome']);
     $senha = addslashes($_POST['senha']);
 
-
-    $sql = $pdo->prepare("SELECT nome,senha FROM usuarios WHERE nome = ? AND senha = ?");
+    $sql = $pdo->prepare("SELECT * FROM usuarios WHERE nome = ? AND senha = ?");
     $sql->bindValue(1, $nome);
     $sql->bindValue(2, MD5($senha));
     $sql->execute();
