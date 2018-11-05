@@ -1,4 +1,18 @@
-<html><head>
+<?php
+session_start();
+require 'config.php';
+require 'config2.php';
+
+if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
+    ?>
+    <script>
+        window.location.href="login.php";
+    </script>
+    <?php
+}else {
+?>
+<html>
+<head>
     <meta charset="utf-8">
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
