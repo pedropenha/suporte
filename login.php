@@ -10,7 +10,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])) {
     var_dump($senha);
     exit;
 
-    $sql = $pdo->prepare("SELECT name, password FROM users WHERE name = ? AND password = ?");
+    $sql = $pdo->prepare("SELECT nome,senha FROM usuarios WHERE nome = ? AND senha = ?");
     $sql->bindValue(1, $nome);
     $sql->bindValue(2, MD5($senha));
     $sql->execute();
