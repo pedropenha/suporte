@@ -38,7 +38,7 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
         <script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/js/material-kit.js" type="text/javascript"></script>
     </head>
-    <body style="background:rgba(255,255,255,0.7);">
+    <body style="background-color: #f2f2f2">
     <div class="container">
         <?php $url = $_SERVER['BASE_URL'];?>
         <div class="header">
