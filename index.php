@@ -65,15 +65,12 @@ if(r === true) window.location.href='sair.php';" style="float: right">
         <br/>
         <br/>
         <h3>Mensagens</h3>
-        <div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Collapsible Group Item #1
-                        </button>
-                    </h5>
-                </div>
+        <div class="card card-nav-tabs">
+            <h4 class="card-header card-header-info">Featured</h4>
+            <div class="card-body">
+                <h4 class="card-title">PedroPenha - Assunto - <span class="badge badge-danger">Esperando resposta</span></h4>
+                <p class="card-text">Preciso que crie um novo usuario com o nome de usuario Pedro123 e senha 1234.</p>
+                <a href="#0" class="btn btn-primary" style="float: right;">Responder</a>
             </div>
         </div>
     </div>
