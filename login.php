@@ -5,10 +5,8 @@ require 'config2.php';
 
 if(isset($_POST['nome']) && !empty($_POST['nome'])) {
     $nome = addslashes($_POST['nome']);
-    $senha = $_POST['senha'];
+    $senha = addslashes($_POST['senha']);
 
-    var_dump($senha);
-    exit;
 
     $sql = $pdo->prepare("SELECT nome,senha FROM usuarios WHERE nome = ? AND senha = ?");
     $sql->bindValue(1, $nome);
@@ -18,7 +16,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])) {
     if($sql->rowCount() > 0) {
         $sql = $sql->fetch();
 
-        $_SESSION['user'] = $sql['name'];
+        $_SESSION['user'] = $sql['nome'];
         header("Location: index.php");
         exit;
     }else{
