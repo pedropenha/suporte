@@ -107,7 +107,7 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
                         <?php
                     endforeach;
                     }else{
-                        echo "<h2>Você ainda não possui nenhuma mensagem!</h2>";
+                        echo "<h2>Você ainda não enviou nenhuma mensagem!</h2>";
                     }
                     ?>
                 </div>
