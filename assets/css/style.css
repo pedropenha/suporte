@@ -8,5 +8,7 @@
 .text-button{
     color: #fff !important;
 }
-
+.link-nav{
+    cursor: pointer;
+}
 

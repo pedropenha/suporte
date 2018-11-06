@@ -20,7 +20,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])) {
     }else{
         ?>
         <script>
-            alert('Usuario não encontrado');
+            alert('Usuario não encontrado ou não é permitido entrar nesta área');
         </script>
         <?php
     }
@@ -32,7 +32,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])) {
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="./assets/img/ufgd-universidade-federal-da-grande-dourados-logo-BA008DE1C7-seeklogo.com.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -54,7 +54,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])) {
                 <div class="card card-signup">
                     <form class="form" method="POST">
                         <div class="card-header card-header-info text-center">
-                            <h4 class="card-title">Administração</h4>
+                            <h4 class="card-title">Suporte UFGDWiki</h4>
                         </div>
                         <div class="card-body">
                             <br/>

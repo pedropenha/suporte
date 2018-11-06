@@ -14,7 +14,7 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
     <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+        <link rel="icon" type="image/png" href="./assets/img/ufgd-universidade-federal-da-grande-dourados-logo-BA008DE1C7-seeklogo.com.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -26,7 +26,7 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
         <link href="assets/css/style.css" rel="stylesheet"/>
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="assets/demo/demo.css" rel="stylesheet" />
-        <title>Login - Suporte</title>
+        <title>Painel de suporte</title>
     </head>
     <body style="background-color: white !important;">
     <nav class="navbar navbar-expand-lg bg-success">
@@ -49,7 +49,7 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
                         <a class="nav-link" href="contato.php"><i class="material-icons">message</i> Nova mensagem</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="let r = confirm('Deseja sair do sistema?');
+                        <a class="nav-link link-nav" onclick="let r = confirm('Deseja sair do sistema?');
                             if(r === true) window.location.href='sair.php';">
                             <i class="material-icons">exit_to_app</i> Sair
                         </a>
