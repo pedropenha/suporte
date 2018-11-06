@@ -6,7 +6,7 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])) {
     $nome = addslashes($_POST['nome']);
     $senha = addslashes($_POST['senha']);
 
-    $sql = $pdo->prepare("SELECT * FROM usuarios WHERE nome = ? AND senha = ?");
+    $sql = $pdo->prepare("SELECT * FROM usuarios WHERE nome = ? AND senha = ? AND tipo = 1");
     $sql->bindValue(1, $nome);
     $sql->bindValue(2, MD5($senha));
     $sql->execute();
@@ -32,69 +32,144 @@ if(isset($_POST['nome']) && !empty($_POST['nome'])) {
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/demo/demo.css" rel="stylesheet" />
     <title>Login - Suporte</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
-    <!-- CSS Files -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/material-kit.css" rel="stylesheet"/>
-
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/js/material.min.js"></script>
-    <script src="assets/js/nouislider.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <script src="assets/js/material-kit.js" type="text/javascript"></script>
-
 </head>
-<body class="signup-page">
-<div class="wrapper">
-    <div class="header header-filter" style="background-image: url('assets/img/bg2.jpeg'); background-size: cover; background-position: top center;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-                    <div class="card card-signup">
-                        <form class="form" method="POST">
-                            <div class="header header-info text-center">
-                                <h4>Painel suporte usuario</h4>
+<body class="login-page">
+<div class="page-header header-filter" style="background-image: url('assets/img/bg2.jpeg'); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-signup">
+                    <form class="form" method="POST">
+                        <div class="card-header card-header-info text-center">
+                            <h4 class="card-title">Administração</h4>
+                        </div>
+                        <div class="card-body">
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="material-icons">face</i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Usuario UFGDWiki" name="nome">
                             </div>
-                            <div class="content">
+                            <br/>
 
-                                <div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">face</i>
-										</span>
-                                    <input type="text" class="form-control" placeholder="Usuario UFGDWiki" name="nome"/>
-                                </div>
-
-                                <div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">lock_outline</i>
-										</span>
-                                    <input type="password" placeholder="Senha UFGDWiki" class="form-control" name="senha"/>
-                                </div>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="material-icons">lock_outline</i>
+                                </span>
+                                <input type="password" class="form-control" placeholder="Senha UFGDWiki" name="senha">
                             </div>
-                            <div class="footer text-center">
-                                <button type="submit" class="btn btn-success btn-round">
-                                     Entrar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                            <br/>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-success btn-round" value="entrar"/>
+                        </div>
+                        <br/>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<footer>
+</footer>
+<script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+<script src="assets/js/plugins/moment.min.js"></script>
+<!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+<script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<!--	Plugin for Sharrre btn -->
+<script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+<!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+<script>
+    $(document).ready(function() {
+        //init DateTimePickers
+        materialKit.initFormExtendedDatetimepickers();
+
+        // Sliders Init
+        materialKit.initSliders();
+    });
+
+
+    function scrollToDownload() {
+        if ($('.section-download').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('.section-download').offset().top
+            }, 1000);
+        }
+    }
+
+
+    $(document).ready(function() {
+
+        $('#facebook').sharrre({
+            share: {
+                facebook: true
+            },
+            enableHover: false,
+            enableTracking: false,
+            enableCounter: false,
+            click: function(api, options) {
+                api.simulateClick();
+                api.openPopup('facebook');
+            },
+            template: '<i class="fab fa-facebook-f"></i> Facebook',
+            url: 'https://demos.creative-tim.com/material-kit/index.html'
+        });
+
+        $('#googlePlus').sharrre({
+            share: {
+                googlePlus: true
+            },
+            enableCounter: false,
+            enableHover: false,
+            enableTracking: true,
+            click: function(api, options) {
+                api.simulateClick();
+                api.openPopup('googlePlus');
+            },
+            template: '<i class="fab fa-google-plus"></i> Google',
+            url: 'https://demos.creative-tim.com/material-kit/index.html'
+        });
+
+        $('#twitter').sharrre({
+            share: {
+                twitter: true
+            },
+            enableHover: false,
+            enableTracking: false,
+            enableCounter: false,
+            buttons: {
+                twitter: {
+                    via: 'CreativeTim'
+                }
+            },
+            click: function(api, options) {
+                api.simulateClick();
+                api.openPopup('twitter');
+            },
+            template: '<i class="fab fa-twitter"></i> Twitter',
+            url: 'https://demos.creative-tim.com/material-kit/index.html'
+        });
+
+    });
+</script>
 </body>
 </html>

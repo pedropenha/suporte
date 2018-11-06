@@ -12,44 +12,52 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
     ?>
     <html>
     <head>
-        <meta charset="utf-8">
-        <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Gerenciamento de Página</title>
-
-        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <!-- CSS Files -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/css/material-kit.css" rel="stylesheet">
-
-        <!--   Core JS Files   -->
-        <script src="assets/js/jquery.min.js" type="text/javascript"></script>
-        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="assets/js/material.min.js"></script>
-        <script src="assets/js/nouislider.min.js" type="text/javascript"></script>
-        <script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
-        <script src="assets/js/material-kit.js" type="text/javascript"></script>
+        <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
+        <!-- CSS Just for demo purpose, don't include it in your project -->
+        <link href="assets/demo/demo.css" rel="stylesheet" />
+        <title>Login - Suporte</title>
     </head>
-    <body style="background-color: #f2f2f2 !important;">
+    <body style="background-color: white !important;">
     <div class="container">
         <br>
         <form method="POST">
             <h2>Gerenciamento de páginas
-                <a href="./" class="btn btn-info btn-fab btn-fab-mini btn-round" style="float: right;"><i
+                <a href="./" class="btn btn-info btn-fab btn-round" style="float: right;"><i
                             class="material-icons">arrow_back</i></a></h2>
             <br>
             <br>
+            <?php
+            if(isset($_POST['mensagem']) && !empty($_POST['mensagem'])){
+                $assunto = addslashes($_POST['assunto']);
+                $mensagem = addslashes($_POST['mensagem']);
+
+                $sql = "INSERT INTO msg (usuario, mensagem, assunto, hora) VALUES (?,?,?,NOW())";
+                $sql = $pdo->prepare($sql);
+                $sql->bindValue(1, $_SESSION['user']);
+                $sql->bindValue(2, $mensagem);
+                $sql->bindValue(3, $assunto);
+                $sql->execute();
+
+                ?>
+                <script>
+                    alert('Mensagem enviada com sucesso');
+                    window.location.href='index.php';
+                </script>
+                <?php
+            }
+            ?>
             <h4>Assunto do contato</h4>
             <div class="form-group">
-                <select class="form-control">
+                <select class="custom-select" name="assunto">
                     <option></option>
                     <option>Criação de nova página</option>
                     <option>Deletar página</option>
@@ -58,11 +66,96 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
                 </select>
             </div>
             <h4>Mensagem</h4>
-            <textarea class="form-control"></textarea>
-
-            <input class="btn btn-success" type="submit" value="Enviar">
+            <textarea class="form-control" name="mensagem"></textarea>
+            <br/>
+            <input class="btn btn-success float-right btn-round" type="submit" value="Enviar">
         </form>
     </div>
+    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--	Plugin for Sharrre btn -->
+    <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            //init DateTimePickers
+            materialKit.initFormExtendedDatetimepickers();
+
+            // Sliders Init
+            materialKit.initSliders();
+        });
+
+
+        function scrollToDownload() {
+            if ($('.section-download').length != 0) {
+                $("html, body").animate({
+                    scrollTop: $('.section-download').offset().top
+                }, 1000);
+            }
+        }
+
+
+        $(document).ready(function() {
+
+            $('#facebook').sharrre({
+                share: {
+                    facebook: true
+                },
+                enableHover: false,
+                enableTracking: false,
+                enableCounter: false,
+                click: function(api, options) {
+                    api.simulateClick();
+                    api.openPopup('facebook');
+                },
+                template: '<i class="fab fa-facebook-f"></i> Facebook',
+                url: 'https://demos.creative-tim.com/material-kit/index.html'
+            });
+
+            $('#googlePlus').sharrre({
+                share: {
+                    googlePlus: true
+                },
+                enableCounter: false,
+                enableHover: false,
+                enableTracking: true,
+                click: function(api, options) {
+                    api.simulateClick();
+                    api.openPopup('googlePlus');
+                },
+                template: '<i class="fab fa-google-plus"></i> Google',
+                url: 'https://demos.creative-tim.com/material-kit/index.html'
+            });
+
+            $('#twitter').sharrre({
+                share: {
+                    twitter: true
+                },
+                enableHover: false,
+                enableTracking: false,
+                enableCounter: false,
+                buttons: {
+                    twitter: {
+                        via: 'CreativeTim'
+                    }
+                },
+                click: function(api, options) {
+                    api.simulateClick();
+                    api.openPopup('twitter');
+                },
+                template: '<i class="fab fa-twitter"></i> Twitter',
+                url: 'https://demos.creative-tim.com/material-kit/index.html'
+            });
+
+        });
+    </script>
     </body>
     </html>
     <?php
