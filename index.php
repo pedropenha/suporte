@@ -29,32 +29,38 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
         <title>Login - Suporte</title>
     </head>
     <body style="background-color: white !important;">
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="/suporte" style="color: white !important;">Suporte - UFGDWiki</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="material-icons text-light">
+                    menu
+                </i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php" style="color: white;"><i class="material-icons">home</i> Página principal  <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create-page.php"><i class="material-icons">create</i> Criação de página</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.php"><i class="material-icons">message</i> Nova mensagem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="let r = confirm('Deseja sair do sistema?');
+                            if(r === true) window.location.href='sair.php';">
+                            <i class="material-icons">exit_to_app</i> Sair
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <?php $url = $_SERVER['BASE_URL'];?>
-        <div class="header">
-            <br/>
-            <img src="assets/img/ufgd-universidade-federal-da-grande-dourados-logo-BA008DE1C7-seeklogo.com.png" style="width: 100px; height: 105px;">
-            <h1 style="float: right;">Suporte - <a class="link-hover" onclick="let r = confirm('Deseja ir para UFGDWiki'); if(r === true) window.location.href='<?php echo $url;?>/UFGDWiki';"
-                style="cursor: pointer;">UFGDWiki</a></h1>
-
-            <br/>
-            <a class="btn btn-danger btn-round text-button" onclick="let r = confirm('Deseja sair do sistema?');
-if(r === true) window.location.href='sair.php';" style="float: right">
-                <i class="material-icons">exit_to_app</i> Sair
-            </a>
-            <br/>
-            <br/>
-        </div>
-        <hr/>
-        <div>
-            <a class="btn btn-info btn-round" href="contato.php" style="float: right;">
-                <i class="material-icons">message</i> Escrever nova mensagem</a>
-            <a class="btn btn-primary btn-round" href="create-page.php" style="float: left;">
-                <i class="material-icons">create</i> Criação de página</a>
-        </div>
         <br/>
-        <br/>
-        <hr/>
         <h3>Mensagens</h3>
         <br/>
         <div class="card card-nav-tabs card-plain">
@@ -87,15 +93,14 @@ if(r === true) window.location.href='sair.php';" style="float: right">
                             foreach ($user as $item):
                         ?>
                         <div class="card card-nav-tabs">
-                            <h3 class="card-header card-header-info">Usuario - <?php echo $item['usuario'];?></h3>
+                            <h3 class="card-header card-header-info text-center">Usuario - <?php echo $item['usuario']; if($item['respondida'] == 0)
+                                    echo "<span class=\"badge badge-danger\" style='float: right; margin-right: 10%;'>Não respondida</span>"?></h3>
                             <div class="card-body">
-                                <h4 class="card-text text-justify" style="margin-left: 10%;">Assunto - <?php echo $item['assunto']; if($item['respondida'] == 0)
-                                        echo "<span class=\"badge badge-danger\" style='float: right; margin-right: 10%;'>Não respondida</span>"?></h4>
+                                <h4 class="card-text text-justify" style="margin-left: 10%;">Assunto - <?php echo $item['assunto'];?></h4>
                                 <hr style="width: 50% !important;"/>
                                 <h4 class="card-text text-justify" style="margin-left: 10%;">Mensagem: <?php echo $item['mensagem']?></h4>
                                 <hr style="width: 50% !important;"/>
                                 <h4 class="card-text text-justify" style="margin-left: 10%; float: left;">Recebida dia: <?php echo $item['hora']?></h4>
-                                <a href="responder.php?id=<?php echo $item['id'];?>" class="btn btn-primary btn-round" style="float: right">Responder</a>
                             </div>
                         </div>
                         <hr/>

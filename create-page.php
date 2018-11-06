@@ -27,12 +27,33 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
         <title>Login - Suporte</title>
     </head>
     <body style="background-color: white !important;">
+    <nav class="navbar navbar-expand-lg bg-success text-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/suporte" style="color: white !important;">Suporte - UFGDWiki</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="material-icons text-light">
+                    menu
+                </i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php"><i class="material-icons">home</i> Página principal  <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="create-page.php"><i class="material-icons">create</i> Criação de página</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.php"><i class="material-icons">message</i> Nova mensagem</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <br>
         <form method="POST">
             <h2>Gerenciamento de páginas
-                <a href="./" class="btn btn-info btn-fab btn-round" style="float: right;"><i
-                            class="material-icons">arrow_back</i></a></h2>
             <br>
             <br>
             <?php
