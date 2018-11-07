@@ -67,11 +67,12 @@ if(!isset($_SESSION['user']) && empty($_SESSION['user'])) {
                 $assunto = addslashes($_POST['assunto']);
                 $mensagem = addslashes($_POST['mensagem']);
 
-                $sql = "INSERT INTO msg (usuario, mensagem, assunto, hora) VALUES (?,?,?,NOW())";
+                $sql = "INSERT INTO msg (usuario, mensagem, assunto, registrado, hora) VALUES (?,?,?,?,NOW())";
                 $sql = $pdo->prepare($sql);
                 $sql->bindValue(1, $_SESSION['user']);
-                $sql->bindValue(2, $assunto);
-                $sql->bindValue(3, $mensagem);
+                $sql->bindValue(2, $mensagem);
+                $sql->bindValue(3, $assunto);
+                $sql->bindValue(4, 1);
                 $sql->execute();
 
                 ?>
